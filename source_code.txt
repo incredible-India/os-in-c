@@ -1,0 +1,604 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<windows.h>
+#include"conio.h"
+#include"welcome.h"
+#include"user.h"
+#include"FILE HANDLING.h"
+#include"Forgate_password.h"
+#include"D:\projects in c\OPRETING SYSTEM\MORE_OPTIONS.h"
+void SetColor(int );
+void gotoxy(int,int);
+void ClearConsoleToColors(int ForgC, int BackC);
+
+int i,j;
+
+int main(int a,char *q[])
+{
+  welcome_windows();
+
+getch();
+
+}
+void gotoxy(int a, int b)
+{
+    COORD x;
+    x.X=a;
+    x.Y=b;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),x);
+
+
+}
+
+void SetColor(int ForgC)
+{
+     WORD wColor;
+
+
+     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+     CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+
+     if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
+     {
+
+          wColor = (csbi.wAttributes & 0xF0) + (ForgC & 0x0F);
+          SetConsoleTextAttribute(hStdOut, wColor);
+     }
+     return;
+}
+
+
+
+void ClearConsoleToColors(int ForgC, int BackC)
+{
+ WORD wColor = ((BackC & 0x0F) << 4) + (ForgC & 0x0F);
+
+ HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+ COORD coord = {0, 0};
+
+ DWORD count;
+ CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+ SetConsoleTextAttribute(hStdOut, wColor);
+ if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
+ {
+
+      FillConsoleOutputCharacter(hStdOut, (TCHAR) 32, csbi.dwSize.X * csbi.dwSize.Y, coord, &count);
+
+      FillConsoleOutputAttribute(hStdOut, csbi.wAttributes, csbi.dwSize.X * csbi.dwSize.Y, coord, &count );
+
+      SetConsoleCursorPosition(hStdOut, coord);
+ }
+}
+void SetColor(int);
+void gotoxy(int,int);
+void New_User(void);
+void FOrgate_password(void);
+void get_help(void);
+void welcome_windows(void)
+{
+extern int i,j;
+
+SetConsoleTitle("OPENING SYSTEM..");
+for(i=5;i<=14;i++)
+{
+    SetColor(59);
+    gotoxy(35,i);
+    printf("*");
+
+}
+for(i=5;i<=14;i++)
+{
+    SetColor(44);
+    gotoxy(65,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(42);
+    gotoxy(40,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(86);
+    gotoxy(45,i);
+    printf("*");
+
+}
+for(i=5;i<=6;i++)
+{
+    SetColor(46);
+    gotoxy(50,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(77);
+    gotoxy(55,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(75);
+    gotoxy(60,i);
+    printf("*");
+
+}
+gotoxy(45,16);
+SetColor(43);
+printf("...WELCOME...");
+getch();
+system("cls");
+for(i=5;i<=14;i++)
+{
+    SetColor(59);
+    gotoxy(35,i);
+    printf("*");
+
+}
+for(i=5;i<=14;i++)
+{
+    SetColor(44);
+    gotoxy(65,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(42);
+    gotoxy(40,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(86);
+    gotoxy(45,i);
+    printf("*");
+
+}
+for(i=5;i<=6;i++)
+{
+    SetColor(46);
+    gotoxy(50,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(77);
+    gotoxy(55,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(75);
+    gotoxy(60,i);
+    printf("*");
+
+}
+gotoxy(40,16);
+SetColor(86);
+printf(" TO OPERATING SYSTEM");
+
+getch();
+a1:
+system("cls");
+for(i=5;i<=14;i++)
+{
+    SetColor(59);
+    gotoxy(35,i);
+    printf("*");
+
+}
+for(i=5;i<=14;i++)
+{
+    SetColor(44);
+    gotoxy(65,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(42);
+    gotoxy(40,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(86);
+    gotoxy(45,i);
+    printf("*");
+
+}
+for(i=5;i<=6;i++)
+{
+    SetColor(46);
+    gotoxy(50,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(77);
+    gotoxy(55,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(75);
+    gotoxy(60,i);
+    printf("*");
+
+}
+gotoxy(46,16);
+SetColor(44);
+printf("PASSWORD");
+for(i=38;i<=62;i++)
+{
+    gotoxy(i,18);
+    printf("-");
+
+}
+gotoxy(85,25);
+SetColor(75);
+printf("3: MORE OPTIONS");
+gotoxy(40,25);
+SetColor(44);
+printf("2: FORGET PASSWORD");
+gotoxy(02,25);
+SetColor(42);
+printf("1: NEW USER");
+{
+    char ch;
+    ch=getch();
+     if(ch=='1')
+    {
+        New_User();
+    }
+    else if(ch=='2')
+    {
+       FOrgate_password();
+    }
+    else if(ch=='3')
+    {
+       get_help();
+    }
+    else
+    {
+        system("cls");
+        printf("\a");
+        goto a1;
+
+    }
+}
+
+}
+
+#define ENTER 13
+#define TAB 9
+#define BKSP 8
+#define ESC 27
+void Readfile(void);
+void user_copy(char [],char [],float ,char [],char []);
+void New_welcome(char []);
+
+ struct users
+{
+  char user_name[40],user_mob[12],user_email[40];
+  float age;
+
+
+};
+void New_User(void)
+{
+
+ struct users  name,mob,email,last_name,age1;
+  char c;
+  system("cls");
+  gotoxy(40,12);
+  SetColor(91);
+  printf("WELCOME TO THIS OPERATING SYSTEM");
+  gotoxy(40,14);
+  printf("HIT <ENTER> TO CONTINUE....... ");
+  c=getch();
+  if(c==ENTER)
+  { a2:a3:
+      system("cls");
+      SetColor(95);
+      gotoxy(16,5);
+      printf("First Name :");
+      SetColor(11);
+      gets(name.user_name);
+
+      SetColor(95);
+      gotoxy(70,5);
+      printf("Last Name :");
+       SetColor(11);
+      gets(last_name.user_name);
+      gotoxy(16,10);
+      SetColor(95);
+      printf("MOBILE NO :");
+      SetColor(11);
+      gets(mob.user_mob);
+      if(strlen(mob.user_mob)!=10)
+      {
+        system("cls");
+        system("color 0c");
+        gotoxy(40,12);
+        printf("\aINCORRECT MOBILE NO..");
+        gotoxy(40,16);
+        printf("PRESS ANY KEY TO CONTINUE..");
+        getch();
+        goto a2;
+
+
+      }
+       SetColor(95);
+      gotoxy(70,10);
+      printf("AGE :");
+      SetColor(11);
+      scanf("%f",&age1.age);
+      if(age1.age<=0)
+      {
+         system("cls");
+        system("color 0c");
+        gotoxy(40,12);
+        printf("\aNEED TO BORN..");
+        gotoxy(40,16);
+        printf("PRESS ANY KEY TO CONTINUE..");
+        getch();
+        goto a3;
+      }
+         SetColor(95);
+      gotoxy(16,15);
+      printf("EMAIL ID :");
+      SetColor(11);
+      fflush(stdin);
+      gets(email.user_email);
+     user_copy(name.user_name,last_name.user_name,age1.age,mob.user_mob,email.user_email);
+      New_welcome(name.user_name);
+  }
+  else
+  {
+      system("cls");
+      printf("\a");
+      New_User();
+  }
+
+
+
+
+
+}
+void New_welcome(char name[])
+{
+extern int i,j;
+system("cls");
+    for(i=5;i<=14;i++)
+{
+    SetColor(59);
+    gotoxy(35,i);
+    printf("*");
+
+}
+for(i=5;i<=14;i++)
+{
+    SetColor(44);
+    gotoxy(65,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(42);
+    gotoxy(40,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(86);
+    gotoxy(45,i);
+    printf("*");
+
+}
+for(i=5;i<=6;i++)
+{
+    SetColor(46);
+    gotoxy(50,i);
+    printf("*");
+
+}
+for(i=5;i<=8;i++)
+{
+    SetColor(77);
+    gotoxy(55,i);
+    printf("*");
+
+}
+for(i=5;i<=10;i++)
+{
+    SetColor(75);
+    gotoxy(60,i);
+    printf("*");
+
+}
+gotoxy(45,16);
+SetColor(43);
+printf("%s",strupr(name));
+getch();
+system("cls");
+ Readfile();
+
+}
+void TermandConditions(void);
+void get_help(void)
+{
+char ch; read2_again:
+system("cls");
+gotoxy(16,5);
+printf("1: GET INSTRUCTION...");
+gotoxy(70,5);
+printf("2: TERM AND CONDITIONS.. ");
+gotoxy(16,10);
+printf("3: GET THE SOURCE CODE..");
+gotoxy(70,10);
+printf("4: CHANGE THE COLOR");
+gotoxy(16,15);
+printf("5: <-- BACK");
+gotoxy(70,15);
+printf("6: EXIT");
+ch=getch();
+if(ch=='1')
+{
+    printf("get instr");
+}
+else if(ch=='2')
+{
+    system("color 7c");
+system("cls");
+TermandConditions();
+{
+    char f;
+    gotoxy(40,20);
+    printf("PRESS <ENTER> TO GO BACK");
+    f=getch();
+    get_help();
+}
+}
+else if(ch=='3')
+{
+    printf("fghj");
+}
+else if(ch=='4')
+{
+    printf("color");
+}
+else if(ch=='5')
+{
+    printf("85");
+}
+else if(ch=='6')
+{
+system("cls");
+gotoxy(40,12);
+system("color 71");
+printf("THANX FOR USING THIS ");
+getch();
+exit(0);
+
+}
+else
+{
+printf("\a");
+goto read2_again;
+
+}
+
+
+}
+ void get_help(void);
+void user_copy(char ch[],char ln[],float age,char mobi[],char emailid[])
+{
+   SYSTEMTIME t;
+   GetSystemTime(&t);
+
+  FILE *p;
+  p=fopen("USERINFO.txt","a");
+  fprintf(p,"\n \n");
+  fprintf(p,"%d-%d-%d",t.wDay,t.wMonth,t.wYear);
+  fprintf(p,"\n ");
+  fprintf(p,"\nNAME : %s ",strupr(ch));
+  fprintf(p," %s\n",strupr(ln));
+  fprintf(p,"\nAge: %f\n",age);
+  fprintf(p,"\nUser MOBILE NO : %s\n",mobi);
+  fprintf(p,"\nEmail id : %s",emailid);
+  fprintf(p,"\n");
+  fprintf(p,"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+  fclose(p);
+
+
+
+
+
+
+}
+void Readfile(void)
+{
+
+    FILE *p;
+  p=fopen("USERINFO.txt","r");
+  char ch;
+  if(p==NULL)
+  {
+      system("cls");
+      system("coloe 71");
+      gotoxy(40,12);
+  printf("Error File Not Found");
+  getch();
+  }
+
+  while(!feof(p))
+  {
+      printf("%c",ch);
+      ch=fgetc(p);
+
+
+  }
+    fclose(p);
+
+}
+void REadagain(char c[],char g[])
+{
+
+  FILE *p;
+  p=fopen("FORGATE_PASSWORD.txt","a");
+  fprintf(p,"\n");
+  fprintf(p," \n%s\n ",c);
+  fputs(g,p);
+  fprintf(p,"------------__________------------_____________");
+  fclose(p);
+
+
+}
+void TermandConditions(void)
+{
+    FILE *p;
+    char ch;
+    p=fopen("tearms.txt","r");
+    if(p==NULL)
+    {
+        system("cls");
+        gotoxy(40,12);
+        system("color 71");
+        printf("File Not Found");
+        getch();
+        get_help();
+
+    }
+    while(!feof(p))
+    {
+
+        printf("%c",ch);
+        ch=fgetc(p);
+    }
+    fclose(p);
+
+
+
+}
+
+
+
+

@@ -1,0 +1,16 @@
+                                  TERMS  &&  CONDITIONS
+                               -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-      
+
+
+                                              
+
+             THIS IS JUST A SIMULATOR APPLICATION FOR OPERATING SYSTEM MADE BY 
+              HIMANSHU SHARMA B.E 2nd SEM* 
+              IN THIS APP FILE HANDLING ARE USED TO SAVE YOU DATA FOR BACKUP
+              IF YOU WANT TO SEE THE SOURCE CODE OF THIS, VISIT MY GIT_HUB ACCOUNT
+              <H1FAST> OR <HIMANSHU156200>
+              FOR ANY KIND OF HELP CONTACT AT 9506891090 OR 8604470501..
+             
+
+
+                                         
